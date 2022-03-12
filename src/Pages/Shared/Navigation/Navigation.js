@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 const Navigation = () => {
@@ -28,10 +28,12 @@ const Navigation = () => {
                             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                                 DOCTORS PORTAL
                             </Typography>
-                            <Link to="/appointment">
+                            <NavLink to="/appointment">
                                 <Button color="inherit">APPOINTMENT</Button>
-                            </Link>
-                            <Button color="inherit">Login</Button>
+                            </NavLink>
+                            <NavLink to="/login">
+                                <Button color="inherit">Login</Button>
+                            </NavLink>
                         </Toolbar>
                     </AppBar>
                 </Box>
