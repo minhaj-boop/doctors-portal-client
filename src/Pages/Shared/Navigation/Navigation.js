@@ -7,9 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 
 const Navigation = () => {
+    const { user, logOut } = useAuth();
     return (
         <>
             <nav>
@@ -28,12 +30,17 @@ const Navigation = () => {
                             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                                 DOCTORS PORTAL
                             </Typography>
-                            <NavLink to="/appointment">
+                            <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/appointment">
                                 <Button color="inherit">APPOINTMENT</Button>
                             </NavLink>
-                            <NavLink to="/login">
-                                <Button color="inherit">Login</Button>
-                            </NavLink>
+                            {
+                                user?.email ?
+                                    <Button style={{ textDecoration: 'none', color: 'white' }} onClick={logOut} color="inherit">Logout</Button>
+                                    :
+                                    <NavLink style={{ textDecoration: 'none', color: 'white' }} to="/login">
+                                        <Button color="inherit">Login</Button>
+                                    </NavLink>
+                            }
                         </Toolbar>
                     </AppBar>
                 </Box>
